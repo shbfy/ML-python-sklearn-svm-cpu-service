@@ -9,7 +9,8 @@ def test_example_message(client):
     result = client.simulate_get('/iris')
     assert result.json == {
         'message': 'This service verifies a model using the Iris Test data set. '
-                   'Invoke using the form /Iris/<index of test sample>. For example, /iris/24'}, "The service test will fail until a trained model has been approved"
+                   'Invoke using the form /Iris/<index of test sample>. For example, /iris/24'}, \
+        "The service test will fail until a trained model has been approved"
 
 
 def test_classification_request(client):
@@ -18,4 +19,5 @@ def test_classification_request(client):
 
     result = client.simulate_get('/iris/1')
     assert result.status == "200 OK", "The service test will fail until a trained model has been approved"
-    assert all(k in result.json for k in ("index", "predicted_label", "predicted")), "The service test will fail until a trained model has been approved"
+    assert all(k in result.json for k in (
+        "index", "predicted_label", "predicted")), "The service test will fail until a trained model has been approved"
